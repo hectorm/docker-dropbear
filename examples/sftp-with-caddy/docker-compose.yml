@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+
+  caddy:
+    image: "docker.io/hectormolinero/caddy2:latest"
+    restart: "on-failure:3"
+    ports:
+      - "8080:8080/tcp"
+    volumes:
+      - "./Caddyfile:/etc/caddy/Caddyfile:ro"
+      - "www-alice:/var/www/html/alice/:ro"
+      - "www-bob:/var/www/html/bob/:ro"
+      - "www-dan:/var/www/html/dan/:ro"
+
+  dropbear:
+    image: "docker.io/hectormolinero/dropbear:latest"
+    restart: "on-failure:3"
+    ports:
+      - "2222:2222/tcp"
+    environment:
+      # USERNAME:(plain|encrypted):PASSWORD:UID:GID
+      DROPBEAR_USERS: |
+        alice:::1000:1000
+        bob:plain:password:1001:1001
+        dan:encrypted:$$5$$salt$$Gcm6FsVtF/Qa77ZKD.iwsJlCVPY0XSMgLJL0Hnww/c1:1002:1002
+    volumes:
+      - "./keys/alice_ed25519.pub:/home/alice/.ssh/authorized_keys.d/alice_ed25519.pub:ro"
+      - "dropbear-keys:/etc/dropbear/"
+      - "www-alice:/home/alice/public/"
+      - "www-bob:/home/bob/public/"
+      - "www-dan:/home/dan/public/"
+
+volumes:
+
+  dropbear-keys:
+  www-alice:
+  www-bob:
+  www-dan:

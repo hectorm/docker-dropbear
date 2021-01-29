@@ -1,0 +1,9 @@
+:8080 {
+	root /* /var/www/html/
+	file_server /* browse
+
+	log {
+		output stdout
+		format formatted "{common_log} \"{request>headers>Referer>[0]}\" \"{request>headers>User-Agent>[0]}\""
+	}
+}

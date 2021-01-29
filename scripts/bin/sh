@@ -1,0 +1,14 @@
+#!/bin/busybox sh
+# shellcheck shell=sh
+# shellcheck disable=SC2048,SC2086
+
+set -eu
+
+# Extract binary name from command
+shift 1; c=${*}; c=${c#/bin/}; c=${c%% *}
+
+# Allow only certain commands
+case "${c?}" in
+	sftp-server|scp|rsync) exec ${*} ;;
+	*) exit 1 ;;
+esac
