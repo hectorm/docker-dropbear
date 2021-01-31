@@ -1,5 +1,5 @@
 :8080 {
-	root /* /var/www/html/
+	root /* /var/www/data/
 	file_server /* browse
 
 	log {
