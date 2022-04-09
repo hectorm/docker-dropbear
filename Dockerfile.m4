@@ -78,9 +78,9 @@ RUN test -z "$(readelf -x .interp ./dropbearmulti 2>/dev/null)"
 RUN strip -s ./dropbearmulti
 
 # Build OpenSSH SFTP-server
-ARG OPENSSH_VERSION=8.9p1
+ARG OPENSSH_VERSION=9.0p1
 ARG OPENSSH_TARBALL_URL=https://cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-${OPENSSH_VERSION}.tar.gz
-ARG OPENSSH_TARBALL_CHECKSUM=fd497654b7ab1686dac672fb83dfb4ba4096e8b5ffcdaccd262380ae58bec5e7
+ARG OPENSSH_TARBALL_CHECKSUM=03974302161e9ecce32153cfa10012f1e65c8f3750f573a73ab1befd5972a28a
 RUN mkdir /tmp/openssh/
 WORKDIR /tmp/openssh/
 RUN curl -Lo /tmp/openssh.tgz "${OPENSSH_TARBALL_URL:?}"
