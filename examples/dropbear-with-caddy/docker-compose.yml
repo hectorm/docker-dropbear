@@ -14,7 +14,7 @@ services:
       - "www-dan:/var/www/data/dan/:ro"
 
   dropbear:
-    image: "docker.io/hectormolinero/dropbear:latest"
+    image: "docker.io/hectorm/dropbear:latest"
     restart: "on-failure:3"
     ports:
       - "2222:2222/tcp"
