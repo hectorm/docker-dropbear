@@ -4,6 +4,5 @@
 
 	log {
 		output stdout
-		format formatted "{common_log} \"{request>headers>Referer>[0]}\" \"{request>headers>User-Agent>[0]}\""
 	}
 }
