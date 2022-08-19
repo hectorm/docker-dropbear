@@ -92,9 +92,9 @@ RUN test -z "$(readelf -x .interp ./sftp-server 2>/dev/null)"
 RUN strip -s ./sftp-server
 
 # Build rsync
-ARG RSYNC_VERSION=3.2.4
+ARG RSYNC_VERSION=3.2.5
 ARG RSYNC_TARBALL_URL=https://download.samba.org/pub/rsync/src/rsync-${RSYNC_VERSION}.tar.gz
-ARG RSYNC_TARBALL_CHECKSUM=6f761838d08052b0b6579cf7f6737d93e47f01f4da04c5d24d3447b7f2a5fad1
+ARG RSYNC_TARBALL_CHECKSUM=2ac4d21635cdf791867bc377c35ca6dda7f50d919a58be45057fd51600c69aba
 RUN mkdir /tmp/rsync/
 WORKDIR /tmp/rsync/
 RUN curl -Lo /tmp/rsync.tgz "${RSYNC_TARBALL_URL:?}"
@@ -129,10 +129,10 @@ RUN chmod 664 ./etc/group ./etc/passwd ./etc/shadow
 RUN chown -R root:root ./
 
 ##################################################
-## "dropbear" stage
+## "main" stage
 ##################################################
 
-FROM scratch AS dropbear
+FROM scratch AS main
 
 COPY --from=build /tmp/rootfs/ /
 
