@@ -92,9 +92,9 @@ RUN test -z "$(readelf -x .interp ./sftp-server 2>/dev/null)"
 RUN strip -s ./sftp-server
 
 # Build rsync
-ARG RSYNC_VERSION=3.2.5
+ARG RSYNC_VERSION=3.2.6
 ARG RSYNC_TARBALL_URL=https://download.samba.org/pub/rsync/src/rsync-${RSYNC_VERSION}.tar.gz
-ARG RSYNC_TARBALL_CHECKSUM=2ac4d21635cdf791867bc377c35ca6dda7f50d919a58be45057fd51600c69aba
+ARG RSYNC_TARBALL_CHECKSUM=fb3365bab27837d41feaf42e967c57bd3a47bc8f10765a3671efd6a3835454d3
 RUN mkdir /tmp/rsync/
 WORKDIR /tmp/rsync/
 RUN curl -Lo /tmp/rsync.tgz "${RSYNC_TARBALL_URL:?}"
