@@ -132,7 +132,7 @@ RUN chown -R root:root ./
 ## "main" stage
 ##################################################
 
-FROM scratch AS main
+m4_ifdef([[CROSS_ARCH]], [[FROM docker.io/hectorm/scratch:CROSS_ARCH]], [[FROM scratch]]) AS main
 
 COPY --from=build /tmp/rootfs/ /
 
