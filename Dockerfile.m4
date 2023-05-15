@@ -19,7 +19,8 @@ RUN apk add --no-cache \
 		perl \
 		zlib-dev \
 		zlib-static \
-		zstd-dev
+		zstd-dev \
+		zstd-static
 
 # Switch to unprivileged user
 ENV USER=builder GROUP=builder
