@@ -64,9 +64,9 @@ RUN test -z "$(readelf -x .interp ./_install/bin/busybox 2>/dev/null)"
 RUN strip -s ./_install/bin/busybox
 
 # Build Dropbear
-ARG DROPBEAR_VERSION=2022.83
+ARG DROPBEAR_VERSION=2024.84
 ARG DROPBEAR_TARBALL_URL=https://mirror.dropbear.nl/mirror/dropbear-${DROPBEAR_VERSION}.tar.bz2
-ARG DROPBEAR_TARBALL_CHECKSUM=bc5a121ffbc94b5171ad5ebe01be42746d50aa797c9549a4639894a16749443b
+ARG DROPBEAR_TARBALL_CHECKSUM=16e22b66b333d6b7e504c43679d04ed6ca30f2838db40a21f935c850dfc01009
 RUN mkdir /tmp/dropbear/
 WORKDIR /tmp/dropbear/
 RUN curl -Lo /tmp/dropbear.tbz2 "${DROPBEAR_TARBALL_URL:?}"
