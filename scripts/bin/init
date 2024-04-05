@@ -16,9 +16,6 @@ if [ ! -e /etc/dropbear/ ]; then
 	mkdir /etc/dropbear/
 fi
 
-if [ ! -e /etc/dropbear/dropbear_dss_host_key ]; then
-	dropbearkey -t dss -f /etc/dropbear/dropbear_dss_host_key >/dev/null
-fi
 if [ ! -e /etc/dropbear/dropbear_rsa_host_key ]; then
 	dropbearkey -t rsa -f /etc/dropbear/dropbear_rsa_host_key >/dev/null
 fi
