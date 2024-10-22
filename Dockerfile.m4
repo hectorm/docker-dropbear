@@ -137,4 +137,4 @@ COPY --from=build /tmp/rootfs/ /
 
 USER 0:0
 ENTRYPOINT ["/bin/init"]
-CMD ["-F", "-E", "-m", "-w", "-j", "-k", "-p", "0.0.0.0:2222"]
+CMD ["-F", "-E", "-m", "-w", "-j", "-k", "-p", ":2222"]
