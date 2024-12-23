@@ -9,6 +9,6 @@ shift 1; c=${*}; c=${c#/bin/}; c=${c%% *}
 
 # Allow only certain commands
 case "${c?}" in
-	sftp-server|scp|rsync) exec ${*} ;;
+	sftp-server|scp|rsync|md5sum|sha1sum|sha256sum) exec ${*} ;;
 	*) exit 1 ;;
 esac

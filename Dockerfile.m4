@@ -57,6 +57,9 @@ RUN setcfg() { sed -ri "s/^(# )?(${1:?})( is not set|=.*)$/\2=${2?}/" ./.config;
 	&& setcfg CONFIG_ID                    y \
 	&& setcfg CONFIG_MKDIR                 y \
 	&& setcfg CONFIG_MKPASSWD              y \
+	&& setcfg CONFIG_MD5SUM                y \
+	&& setcfg CONFIG_SHA1SUM               y \
+	&& setcfg CONFIG_SHA256SUM             y \
 	&& grep -v '^#' ./.config | sort | uniq
 RUN make -j "$(nproc)" && make install
 RUN test -z "$(readelf -x .interp ./_install/bin/busybox 2>/dev/null)"
