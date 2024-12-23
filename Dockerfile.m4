@@ -4,7 +4,7 @@ m4_changequote([[, ]])
 ## "build" stage
 ##################################################
 
-m4_ifdef([[CROSS_ARCH]], [[FROM docker.io/CROSS_ARCH/alpine:3]], [[FROM docker.io/alpine:3]]) AS build
+m4_ifdef([[CROSS_ARCH]], [[FROM docker.io/CROSS_ARCH/alpine:3.20]], [[FROM docker.io/alpine:3.20]]) AS build
 
 # Install system packages
 RUN apk add --no-cache \
